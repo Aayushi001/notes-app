@@ -17,6 +17,7 @@ e. Data is stored in browser's localstorage.
 
 
 To run the application,
+
 1> Clone this repo.
 
 2> Install node modules with command "npm i".
