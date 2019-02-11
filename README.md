@@ -25,4 +25,4 @@ To run the application,
 3> Run using command "ng serve".
 
 
-PS. To view th icons, you must have internet connection as I've used CDN link for font icons library.
+PS. To view the icons, you must have internet connection as I've used CDN link for font icons library.
