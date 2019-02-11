@@ -1,0 +1,44 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar toolbar">
+    <button mat-icon-button class = "menu-btn" (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span class="custom-spacer"></span>
+    <div>
+      <button class="toolbar-btn" mat-raised-button (click) = "addNewNote()"><mat-icon>note_add</mat-icon></button>
+      <button class="toolbar-btn" mat-raised-button (click) = "saveNote()"><mat-icon>check_circle</mat-icon></button>
+      <button class="toolbar-btn" mat-raised-button (click) = "deleteNote()"><mat-icon>delete</mat-icon></button>
+    </div>
+    <input class="toolbar-search" placeholder="Search" [(ngModel)] = "searchedTerm" (ngModelChange) = "searchFn()">
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav [opened]="mobileQuery.matches ? false : true" #snav class="custom-sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches">
+      <mat-nav-list>
+        <div *ngFor="let note of notes; let i = index">
+            <a style="color : black;" mat-list-item  (click) = "selectedNote(i)">
+              <b>
+                  <span *ngIf = "note.description.length > 20" [innerHTML] = "note.description.substring(0,20) + '...'"></span>
+                  <span *ngIf = "note.description.length <= 20" [innerHTML] = "note.description"></span>  
+              </b>
+              <span class="custom-spacer"></span>
+              <span style="float: right; color: grey; font-size: 13px;">{{note?.timestamp | date : 'short'}}</span>
+            </a>
+            <hr style="margin-top: 5px; margin-bottom: 5px;">
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="note-content">
+      <div *ngIf = "writeNote" style="position : relative;">
+        <app-ngx-editor [placeholder]="'Enter text here...'" [minHeight] = "'45rem'" [toolbar] = "toolbarConfig" [(ngModel)]="description"></app-ngx-editor>
+        <span class = "currentDateTime">{{currentDateTime | date : 'medium' }}</span>
+      </div>
+      <div *ngIf = "!writeNote">
+        <h4 style="text-align : center">You can add,delete or search your notes. <br>
+        Refer the toolbar given above for various functionalities.
+        </h4>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

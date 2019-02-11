@@ -1,0 +1,111 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+  }
+  
+  .example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+
+  /* Custom css */
+  .toolbar{
+      background-color: #e6e5e7;
+  }
+  .note-content{
+      background: white;
+      color: black;
+  }
+  .custom-sidenav{
+      width: 300px;
+      background-color: #fafaf7;
+      color: black !important;
+  }
+
+  .custom-spacer{
+    flex: 1 1 auto;
+  }
+
+  .menu-btn{
+      font-size: 28px;
+      margin-right: 5px;
+  }
+  /* .ngx-editor .ngx-wrapper .ngx-editor-placeholder{ top: 40px !important;}
+  .ngx-editor-textarea {padding: 20px 20px 20px 20px !important;} */
+
+
+  @media (min-width:320px)  { 
+      /* for phones */
+      .toolbar-btn{
+        background-color : #f8f7f8;
+        color: grey;
+        margin: 5px;
+        padding: 5px 8px; 
+        border-radius: 10px;
+    }
+    .toolbar-search{
+        height: 25px;
+        width: 40%;
+        margin-left: 6px;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color : #f8f7f8;
+        color: grey;
+    }
+    .note-content{  padding-top: 40px;}
+    .currentDateTime{
+        position: absolute;
+        color: grey;
+        top: -27px; 
+        right : 28%;
+    }
+    .custom-sidenav{ margin-top: 60px;}
+
+    
+  }
+
+  @media (min-width:760px)  { 
+    /* for tablets/desktop */
+    .toolbar-btn{
+      margin: 6px;
+      padding: 5px 16px; 
+    }
+    .toolbar-search{
+      width: 22%;
+      margin: 6px;
+    }
+    .note-content{  padding-top: 0px;}
+    .currentDateTime{
+        position: absolute;
+        color: grey;
+        top: 10px; 
+        font-size: 14px;
+        right : 8px;
+    }
+    .custom-sidenav{ margin-top: 0px;}
+
+  
+}
